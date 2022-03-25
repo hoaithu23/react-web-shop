@@ -1,0 +1,27 @@
+.footer{
+    box-shadow: $box-shadow;
+    font-size: 1.1rem;
+    padding: 70px 0;
+
+    &__logo{
+        height: 100px;
+    }
+
+    &__title{
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+
+    &__about{
+        p{
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__content{
+        p{
+            margin-bottom: 1.25rem;
+        }
+    }
+}

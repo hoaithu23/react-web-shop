@@ -1,0 +1,204 @@
+.slider{
+    position: relative;
+    max-height: 1080px;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: calc(#{$header-height} * 0);
+    margin-bottom: 50px;
+
+    @include mobile{
+        margin-top: calc(#{$header-mobile-height} * -1);
+    }
+    
+    @include tablet{
+        margin-top: calc(#{$header-tablet-height} * -1);
+    }
+
+    &__item{
+        @include flex(center, space-between);
+
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        visibility: hidden;
+        opacity: 0;
+
+        &.active{
+            pointer-events: visible;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        &__info
+        {
+            width: 58.33%;
+
+            &__title,
+            &__description{
+                margin-bottom: 60px;
+                @include tablet{
+                    margin-bottom: 15px;
+                }
+            }
+            &__title{
+                font-family: "M PLUS Rounded 1c", sans-serif;
+                font-size: 4.2rem;
+                font-weight: 600;
+                line-height: 6rem;
+                overflow: hidden;
+
+                @include mobile{
+                    font-size: 2.2rem;
+                    line-height: 3.5rem;
+                }
+            }
+
+            &__description{
+                font-size: 1.2rem;
+                color: $txt-second-color;
+                line-height: 2rem;
+                overflow: hidden;
+
+                @include mobile{
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+            }
+
+            &__btn{
+                overflow: hidden;
+            }
+
+            &__title>span,
+            &__description>span,
+            &__btn button{
+                display: block;
+                transform: translateY(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            @include tablet{
+                width: 100%;
+                flex-grow: 1;
+            }
+        }
+
+        &__image
+        {
+            position: relative;
+            height: 100%;
+            flex-grow: 1;
+            pointer-events: none;
+            z-index: 99;
+
+            img{
+                position: absolute;
+                height: 100vh;
+                bottom: 0;
+                right: 0;
+                transition: transform .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                transform: scale(0) rotate(65deg);
+
+                @include tablet{
+                    position: relative;
+                    height: 100%;
+                }
+            }
+
+            .shape{
+                $size: 472px;
+                position: absolute;
+                width: $size;
+                height: $size;
+                top: 50%;
+                right: 0;
+                border-radius: 65% 35% 56% 44% / 38% 28% 72% 62% ;
+                transform: translate(0, -50%);
+                transition: border-radius 13s ease;
+                animation: border 10s infinite;
+
+                @include tablet{
+                    $size: 350px;
+                    width: $size;
+                    height: $size;
+                    right: 50%;
+                    transform: translate(50%, -50%);
+                }
+            }
+
+            @include tablet{
+
+                @include flex(center, center);
+                width: 100%;
+                height: 60%;
+                flex-grow: unset;
+                z-index: 98;
+            }
+        }
+
+        /*info*/
+        &.active &__info{
+            &__title>span,
+            &__description>span,
+            &__btn button{
+                transform: translateY(0);
+            }
+        }
+
+        /*img*/
+        &.active &__image>img{
+            transform: scale(1) rotate(0);
+        }
+        
+        @include tablet{
+            padding-top: $header-tablet-height;
+            flex-direction: column-reverse;
+        }
+
+        @include mobile{
+            padding-top: unset;
+            padding-bottom: 40px;
+        }
+    }
+
+    &__control
+        {
+
+            @include flex(center, center);
+            position: absolute;
+            left: 50%;
+            bottom: 50px;
+            transform: translateX(-50%);
+
+            &__item ~ &__item{
+                margin-left: 10px;
+            }
+            &__item{
+                @include flex(center, center);
+                font-size: 2rem;
+                cursor: pointer;
+                &:hover{
+                    color: $main-color;
+                }
+                .index{
+                    font-size: 1.6rem;
+                }
+            }
+
+            @include mobile{
+                bottom: 0;
+            }
+        }
+}
+
+@keyframes border{
+    0%{
+        border-radius: 65% 35% 56% 44% / 38% 28% 72% 62% ;
+    }
+    50%{
+        border-radius: 38% 72% 70% 24% / 18% 10% 95% 82% ;
+    }
+    100%{
+        border-radius: 65% 35% 56% 44% / 38% 28% 72% 62% ;
+    }
+}

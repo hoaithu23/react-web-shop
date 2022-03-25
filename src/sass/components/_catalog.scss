@@ -1,0 +1,38 @@
+.catalog{
+    @include flex(flex-start, flex-start);
+
+    &__filter{
+        width: 20%;
+
+        &__widget{
+            margin-bottom: 2rem;
+
+            &__title{
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 15px;
+                text-transform: capitalize;
+            }
+
+            &__content{
+                color: $txt-second-color;
+
+                &__item{
+                    margin-bottom: 13px;
+                }
+            }
+        }
+
+        @include tablet{
+            width: unset;
+        }
+    }
+
+    &__content{
+        flex-grow: 1;
+
+        @include tablet{
+            width: 100%;
+        }
+    }
+}

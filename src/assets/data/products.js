@@ -24,11 +24,11 @@ import product_8_image_02 from "../images/products/product_8(2).jpg"
 
 const products = [
     {
-        title: "Áo thun 01",
+        title: "Chân váy 01",
         price: '230000',
         image01: product_1_image_01,
         image02: product_1_image_02,
-        categorySlug: "ao-thun",
+        categorySlug: "chan-vay",
         colors: ["white", "red", "orange"],
         slug: "ao-thun-01",
         size: ["s", "m", "l", "xl"]
@@ -44,21 +44,21 @@ const products = [
         size: ["s", "m", "l", "xl"]
     },
     {
-        title: "Áo thun 01",
+        title: "Áo somi 01",
         price: '230000',
         image01: product_3_image_01,
         image02: product_3_image_02,
-        categorySlug: "ao-thun",
+        categorySlug: "ao-somi",
         colors: ["white", "red", "orange"],
         slug: "ao-thun-01",
         size: ["s", "m", "l", "xl"]
     },
     {
-        title: "Áo thun 01",
+        title: "Áo somi 02",
         price: '230000',
         image01: product_4_image_01,
         image02: product_4_image_02,
-        categorySlug: "ao-thun",
+        categorySlug: "ao-somi",
         colors: ["white", "red", "orange"],
         slug: "ao-thun-01",
         size: ["s", "m", "l", "xl"]

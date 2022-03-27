@@ -3,9 +3,18 @@ import PropTypes from 'prop-types'
 import Button from './Button'
 import numbercommas from '../utils/numbercommas'
 import {withRouter} from 'react-router'
+import { addItem } from '../redux/cart/cartItemsSlide'
+import { useDispatch } from 'react-redux'
 
 const ProductView = props => {
-    const product = props.product
+    const dispatch = useDispatch()
+    let product = props.product
+    if(product=== undefined) product = {
+        price: 0,
+        title: "",
+        colors: [],
+        size: []
+    }
     const [previewImg, setPreviewImg] = useState(product.image01)
     const [descriptionExp, setDescriptionExp] = useState(false);
     const [color, setColor] = useState(undefined)
@@ -37,10 +46,29 @@ const ProductView = props => {
         return true
     }
     const addToCart=()=>{
-        if(check()) console.log({color, size, quantity})
+        if(check()){
+            dispatch(addItem({
+                slug: product.slug,
+                color: color,
+                size: size,
+                quantity: quantity,
+                price: product.price
+            }))
+            alert("success")
+        }
     }
     const goToCart=()=>{
-        if(check()) props.history.push('/cart')
+        if(check()) 
+            {
+            dispatch(addItem({
+                slug: product.slug,
+                color: color,
+                size: size,
+                quantity: quantity,
+                price: product.price
+            }))
+            props.history.push('/cart')
+        }
     }
   return (
     <div className='product'>
@@ -133,7 +161,7 @@ const ProductView = props => {
 }
 
 ProductView.propTypes = {
-    product: PropTypes.object.isRequired
+    product: PropTypes.object
 }
 
 export default withRouter(ProductView)

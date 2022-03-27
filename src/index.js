@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import Layout from './components/Layout';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 /* sass */
 import './sass/index.scss'
@@ -11,7 +13,9 @@ import './assets/boxicons-2.1.2/css/boxicons.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout />
+    <Provider store={store}>
+      <Layout />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
